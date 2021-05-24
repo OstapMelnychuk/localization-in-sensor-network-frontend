@@ -11,7 +11,7 @@ import {Node} from './models/Node';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'bachelor-work';
+  title = 'localization-in-sensor-network-frontend';
   public response: NodeLocatorResponse;
   public innerWidth: any;
   public innerHeight: any;
