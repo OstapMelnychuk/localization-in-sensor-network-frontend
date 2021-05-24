@@ -1,0 +1,22 @@
+<div id="analog-clock-canvas" class="canvas"></div>
+
+<div class="non-canvas">
+  <div class="table-wrapper">
+    <table class="fl-table">
+      <thead>
+      <tr>
+        <th>Node</th>
+        <th>Precision</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let row of response.iterationTable" class="table-row">
+        <td>x = {{row.mainNodeLoc.x}}; y = {{row.mainNodeLoc.y}};</td>
+        <td>{{row.precisionDistance}}</td>
+      </tr>
+      <tbody>
+    </table>
+  </div>
+
+  <button (click)="addNode()" class="button-three">Add new node</button>
+</div>
