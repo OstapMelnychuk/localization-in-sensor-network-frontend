@@ -1,5 +1,5 @@
 <div *ngIf="!service.isOnMainPage">
-  <a href="http://localhost:4200" (click)="backToHome()">Back to home</a>
+  <a href="https://localization-in-sensor-network.herokuapp.com" (click)="backToHome()">Back to home</a>
 
   <form [formGroup]="propertiesInput" (ngSubmit)="onSubmit()">
     <input id="quantityFrom" type="number" formControlName="quantityFrom" placeholder="Quantity From">
