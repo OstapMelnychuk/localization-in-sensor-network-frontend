@@ -4,6 +4,7 @@ import {NodeLocatorService} from './services/node-locator.service';
 import {Observable} from 'rxjs';
 import * as p5 from 'p5';
 import {Node} from './models/Node';
+import {FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,13 @@ export class AppComponent implements OnInit {
   public innerWidth: any;
   public innerHeight: any;
   public p: p5;
+  public propertiesInput = this.formBuilder.group({
+    quantity: 3,
+    calculationError: 1.1,
+    iterationQuantity: 3
+  });
   constructor(private service: NodeLocatorService, private el: ElementRef,
-              private renderer: Renderer2) {
+              private renderer: Renderer2, private formBuilder: FormBuilder) {
     this.innerWidth = window.innerWidth - 30;
     this.innerHeight = window.innerHeight / 2;
   }
@@ -28,6 +34,7 @@ export class AppComponent implements OnInit {
         this.response = res;
         console.log(this.response);
         this.init();
+        this.service.toggleNewLocation(true);
       }
     });
   }
@@ -41,10 +48,12 @@ export class AppComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   public addNode() {
-    this.service.addNode(this.response, 1.1, 7).subscribe(res => {
+    this.service.addNode(this.response, this.propertiesInput.value.calculationError,
+      this.propertiesInput.value.iterationQuantity).subscribe(res => {
       this.response = res;
       console.log(this.response);
       this.p.background(255);
+      this.service.toggleNewLocation(false);
     });
   }
 
@@ -96,5 +105,20 @@ export class AppComponent implements OnInit {
         }
       }
     }, this.el.nativeElement);
+  }
+
+  onSubmit(): void {
+    // Process checkout data here
+    console.log(this.propertiesInput.value);
+    this.service.getNodes(this.propertiesInput.value.quantity,
+      this.propertiesInput.value.calculationError,
+      this.propertiesInput.value.iterationQuantity).subscribe(res => {
+      if (res) {
+        this.response = res;
+        console.log(this.response);
+        this.p.background(255);
+        this.service.toggleNewLocation(true);
+      }
+    });
   }
 }
