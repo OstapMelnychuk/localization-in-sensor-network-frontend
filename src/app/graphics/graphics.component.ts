@@ -22,7 +22,7 @@ export class GraphicsComponent implements OnInit, OnChanges {
     },
   ];
   public lineChartOptions = {
-    responsive: true,
+    responsive: false,
   };
   public lineChartLegend = true;
   public lineChartType = 'line';

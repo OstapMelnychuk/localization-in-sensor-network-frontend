@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     calculationError: 1.1,
     iterationQuantity: 3
   });
-  constructor(private service: NodeLocatorService, private el: ElementRef,
+  constructor(public service: NodeLocatorService, private el: ElementRef,
               private renderer: Renderer2, private formBuilder: FormBuilder) {
     this.innerWidth = window.innerWidth - 30;
     this.innerHeight = window.innerHeight / 2;
@@ -120,5 +120,13 @@ export class AppComponent implements OnInit {
         this.service.toggleNewLocation(true);
       }
     });
+  }
+
+  test() {
+
+  }
+
+  removeMainPage() {
+    this.service.toggleMainPage(false);
   }
 }

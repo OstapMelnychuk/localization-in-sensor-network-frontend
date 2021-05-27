@@ -1,0 +1,20 @@
+<div *ngIf="!service.isOnMainPage">
+  <a href="http://localhost:4200" (click)="backToHome()">Back to home</a>
+
+  <form [formGroup]="propertiesInput" (ngSubmit)="onSubmit()">
+    <input id="quantityFrom" type="number" formControlName="quantityFrom" placeholder="Quantity From">
+    <input id="quantityTo" type="number" formControlName="quantityTo" placeholder="Quantity To">
+    <input id="calculationError" type="number" formControlName="calculationError" placeholder="Calculation Error">
+    <input id="iterationQuantity" type="number" formControlName="iterationQuantity" placeholder="Iteration Quantity">
+    <button class="button" type="submit">LocateNode</button>
+  </form>
+
+  <div class="graphics">
+    <app-graphics-comparison [lineChartData]="lineChartDataMin"
+                             [lineChartLabels]="lineChartLabelsMin"></app-graphics-comparison>
+    <app-graphics-comparison [lineChartData]="lineChartDataMax"
+                             [lineChartLabels]="lineChartLabelsMax"></app-graphics-comparison>
+    <app-graphics-comparison [lineChartData]="lineChartDataAverage"
+                             [lineChartLabels]="lineChartLabelsAverage"></app-graphics-comparison>
+  </div>
+</div>

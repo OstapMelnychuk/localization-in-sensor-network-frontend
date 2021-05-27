@@ -9,6 +9,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { GraphicsComponent } from './graphics/graphics.component';
 import {ChartsModule} from 'ng2-charts';
 import { GraphicsQuantityComponent } from './graphics-quantity/graphics-quantity.component';
+import { ComparisonComponent } from './comparison/comparison.component';
+import { GraphicsComparisonComponent } from './graphics-comparison/graphics-comparison.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { GraphicsQuantityComponent } from './graphics-quantity/graphics-quantity
     TableComponent,
     GraphicsComponent,
     GraphicsQuantityComponent,
+    ComparisonComponent,
+    GraphicsComparisonComponent,
   ],
   imports: [
     BrowserModule,

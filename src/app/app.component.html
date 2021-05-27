@@ -1,19 +1,26 @@
-<form [formGroup]="propertiesInput" (ngSubmit)="onSubmit()">
-  <input id="quantity" type="number" formControlName="quantity" placeholder="Quantity">
-  <input id="calculationError" type="number" formControlName="calculationError" placeholder="Calculation Error">
-  <input id="iterationQuantity" type="number" formControlName="iterationQuantity" placeholder="Iteration Quantity">
-  <button class="button" type="submit">LocateNode</button>
-</form>
+<div *ngIf="service.isOnMainPage">
+  <form [formGroup]="propertiesInput" (ngSubmit)="onSubmit()">
+    <input id="quantity" type="number" formControlName="quantity" placeholder="Quantity">
+    <input id="calculationError" type="number" formControlName="calculationError" placeholder="Calculation Error">
+    <input id="iterationQuantity" type="number" formControlName="iterationQuantity" placeholder="Iteration Quantity">
+    <button class="button" type="submit">LocateNode</button>
+  </form>
 
-<div id="analog-clock-canvas" class="canvas"></div>
+  <div id="analog-clock-canvas" class="canvas"></div>
 
-<app-table [response]="response"></app-table>
+  <app-table [response]="response"></app-table>
 
-<button (click)="addNode()" class="button-three">Add new node</button>
-<div class="graphics">
-  <app-graphics [response]="response"></app-graphics>
-  <app-graphics-quantity class="second-graphic" [response]="response"></app-graphics-quantity>
+  <button (click)="addNode()" class="button-three">Add new node</button>
+  <button (click)="test()" class="button-three">Test</button>
+  <a routerLink="/comparison" (click)="removeMainPage()">To comparison</a>
+  <div class="graphics">
+    <app-graphics [response]="response"></app-graphics>
+    <app-graphics-quantity class="second-graphic" [response]="response"></app-graphics-quantity>
+  </div>
 </div>
+
+<router-outlet></router-outlet>
+
 
 
 
