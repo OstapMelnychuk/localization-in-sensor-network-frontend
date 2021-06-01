@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import * as p5 from 'p5';
 import {Node} from './models/Node';
 import {FormBuilder} from '@angular/forms';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
     iterationQuantity: 3
   });
   constructor(public service: NodeLocatorService, private el: ElementRef,
-              private renderer: Renderer2, private formBuilder: FormBuilder) {
+              private renderer: Renderer2, private formBuilder: FormBuilder, private loading: NgxSpinnerService) {
     this.innerWidth = window.innerWidth - 30;
     this.innerHeight = window.innerHeight / 2;
   }
@@ -108,6 +109,7 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.loading.show();
     // Process checkout data here
     console.log(this.propertiesInput.value);
     this.service.getNodes(this.propertiesInput.value.quantity,
@@ -117,6 +119,7 @@ export class AppComponent implements OnInit {
         this.response = res;
         console.log(this.response);
         this.p.background(255);
+        this.loading.hide();
         this.service.toggleNewLocation(true);
       }
     });

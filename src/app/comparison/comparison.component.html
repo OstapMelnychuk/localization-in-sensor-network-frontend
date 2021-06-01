@@ -1,13 +1,12 @@
 <div *ngIf="!service.isOnMainPage">
-  <a href="https://localization-in-sensor-network.herokuapp.com" (click)="backToHome()">Back to home</a>
-
   <form [formGroup]="propertiesInput" (ngSubmit)="onSubmit()">
     <input id="quantityFrom" type="number" formControlName="quantityFrom" placeholder="Quantity From">
     <input id="quantityTo" type="number" formControlName="quantityTo" placeholder="Quantity To">
     <input id="calculationError" type="number" formControlName="calculationError" placeholder="Calculation Error">
     <input id="iterationQuantity" type="number" formControlName="iterationQuantity" placeholder="Iteration Quantity">
-    <button class="button" type="submit">LocateNode</button>
+    <button class="button-submit" type="submit">LocateNode</button>
   </form>
+  <a href="https://localization-in-sensor-network.herokuapp.com" (click)="backToHome()" class="button-three">Back to home</a>
 
   <div class="graphics">
     <app-graphics-comparison [lineChartData]="lineChartDataMin"
@@ -17,4 +16,5 @@
     <app-graphics-comparison [lineChartData]="lineChartDataAverage"
                              [lineChartLabels]="lineChartLabelsAverage"></app-graphics-comparison>
   </div>
+  <ngx-spinner></ngx-spinner>
 </div>

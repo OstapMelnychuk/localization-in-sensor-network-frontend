@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700italic);
+
 form {
   display: flex;
   flex-wrap: wrap;
@@ -19,7 +21,7 @@ input {
   padding: .75rem 1rem;
 }
 
-.button {
+.button-submit {
   border: none;
   border-radius: .25rem;
   padding: .75rem 1rem;
@@ -32,4 +34,51 @@ input {
 .graphics {
   display: flex;
   flex-direction: row;
+}
+
+.button-three {
+  display: inline-block;
+  margin-left: 45%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  text-decoration: none;
+}
+.button-three:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0cf;
+  border-radius: 10rem;
+  z-index: -2;
+}
+.button-three:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #008fb3;
+  transition: all 0.3s;
+  border-radius: 10rem;
+  z-index: -1;
+}
+.button-three:hover {
+  color: #fff;
+}
+.button-three:hover:before {
+  width: 100%;
 }

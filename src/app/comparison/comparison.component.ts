@@ -4,6 +4,7 @@ import {FormBuilder} from '@angular/forms';
 import {IterationServiceResponse} from '../models/IterationServiceResponse';
 import {ChartDataSets} from 'chart.js';
 import {Label} from 'ng2-charts';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-comparison',
@@ -25,7 +26,7 @@ export class ComparisonComponent implements OnInit {
   public lineChartDataAverage: ChartDataSets[] = [];
   public lineChartLabelsAverage: Label[] = [];
 
-  constructor(public service: NodeLocatorService, private formBuilder: FormBuilder) { }
+  constructor(public service: NodeLocatorService, private formBuilder: FormBuilder, private loading: NgxSpinnerService) { }
 
   ngOnInit() {
   }
@@ -41,11 +42,13 @@ export class ComparisonComponent implements OnInit {
   onSubmit(): void {
     // Process checkout data here
     console.log(this.propertiesInput.value);
+    this.loading.show();
     this.service.iterativeComparison(this.propertiesInput.value.quantityFrom,
       this.propertiesInput.value.quantityTo,
       this.propertiesInput.value.calculationError,
       this.propertiesInput.value.iterationQuantity).subscribe(res => {
         this.response = res;
+        this.loading.hide();
         this.prepareMinData();
         this.prepareMaxData();
         this.prepareAverageData();

@@ -11,6 +11,7 @@ import {ChartsModule} from 'ng2-charts';
 import { GraphicsQuantityComponent } from './graphics-quantity/graphics-quantity.component';
 import { ComparisonComponent } from './comparison/comparison.component';
 import { GraphicsComparisonComponent } from './graphics-comparison/graphics-comparison.component';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { GraphicsComparisonComponent } from './graphics-comparison/graphics-comp
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
