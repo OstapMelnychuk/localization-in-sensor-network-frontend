@@ -53,7 +53,6 @@ export class ComparisonComponent implements OnInit {
         this.prepareMaxData();
         this.prepareAverageData();
     });
-    this.loading.hide();
   }
 
   public prepareMinData() {
