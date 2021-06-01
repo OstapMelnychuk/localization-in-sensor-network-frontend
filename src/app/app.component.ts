@@ -123,6 +123,7 @@ export class AppComponent implements OnInit {
         this.service.toggleNewLocation(true);
       }
     });
+    this.loading.show();
   }
 
   test() {
