@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TableComponent } from './table/table.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { GraphicsComponent } from './graphics/graphics.component';
@@ -12,6 +12,7 @@ import { GraphicsQuantityComponent } from './graphics-quantity/graphics-quantity
 import { ComparisonComponent } from './comparison/comparison.component';
 import { GraphicsComparisonComponent } from './graphics-comparison/graphics-comparison.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import { VisualizationComponent } from './visualization/visualization.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     GraphicsQuantityComponent,
     ComparisonComponent,
     GraphicsComparisonComponent,
+    VisualizationComponent,
   ],
   imports: [
     BrowserModule,

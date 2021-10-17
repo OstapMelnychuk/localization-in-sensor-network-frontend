@@ -4,9 +4,9 @@
     <input id="quantityTo" type="number" formControlName="quantityTo" placeholder="Quantity To">
     <input id="calculationError" type="number" formControlName="calculationError" placeholder="Calculation Error">
     <input id="iterationQuantity" type="number" formControlName="iterationQuantity" placeholder="Iteration Quantity">
-    <button class="button-submit" type="submit">LocateNode</button>
+    <button class="button-submit" type="submit">Compare</button>
   </form>
-  <a href="https://localization-in-sensor-network.herokuapp.com" (click)="backToHome()" class="button-three">Back to home</a>
+  <a href="http://localhost:4200" (click)="backToHome()" class="button-three">Back to home</a>
 
   <div class="graphics">
     <app-graphics-comparison [lineChartData]="lineChartDataMin"
@@ -16,5 +16,23 @@
     <app-graphics-comparison [lineChartData]="lineChartDataAverage"
                              [lineChartLabels]="lineChartLabelsAverage"></app-graphics-comparison>
   </div>
+
+  <div *ngIf="loaded">
+    <div class="visualizations">
+      <div class="visualization">
+        <app-visualization [response]="response[i].minCase" [delimiter]="2" [subtractor]="50"></app-visualization>
+        <p class="case-signature">Minimal distance case</p>
+      </div>
+      <div class="visualization">
+        <app-visualization [response]="response[i].maxCase" [delimiter]="2" [subtractor]="50"></app-visualization>
+        <p class="case-signature">Maximal distance case</p>
+      </div>
+    </div>
+    <div class="center">
+      <button class="button-submit" style="text-align: center" (click)="iterateToNextResultsVisualization()">Iterate
+      </button>
+    </div>
+  </div>
+
   <ngx-spinner></ngx-spinner>
 </div>

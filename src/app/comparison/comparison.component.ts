@@ -25,6 +25,8 @@ export class ComparisonComponent implements OnInit {
   public lineChartLabelsMax: Label[] = [];
   public lineChartDataAverage: ChartDataSets[] = [];
   public lineChartLabelsAverage: Label[] = [];
+  public loaded = false;
+  public i = 0;
 
   constructor(public service: NodeLocatorService, private formBuilder: FormBuilder, private loading: NgxSpinnerService) { }
 
@@ -40,6 +42,7 @@ export class ComparisonComponent implements OnInit {
     this.service.toggleMainPage(true);
   }
   onSubmit(): void {
+    this.loaded = false;
     // Process checkout data here
     console.log(this.propertiesInput.value);
     this.loading.show();
@@ -48,10 +51,13 @@ export class ComparisonComponent implements OnInit {
       this.propertiesInput.value.calculationError,
       this.propertiesInput.value.iterationQuantity).subscribe(res => {
         this.response = res;
-        this.loading.hide();
+      console.log(res);
+      this.loading.hide();
         this.prepareMinData();
         this.prepareMaxData();
         this.prepareAverageData();
+        this.i = 0;
+        this.loaded = true;
     });
   }
 
@@ -101,5 +107,9 @@ export class ComparisonComponent implements OnInit {
       data: data,
       label: 'Average precision'
     }];
+  }
+
+  public iterateToNextResultsVisualization() {
+    this.i === this.propertiesInput.value.quantityTo - this.propertiesInput.value.quantityFrom ? this.i = 0 : this.i++;
   }
 }
