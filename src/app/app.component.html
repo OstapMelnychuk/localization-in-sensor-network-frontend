@@ -8,7 +8,7 @@
   </form>
 
 
-  <div *ngIf="response">
+  <div *ngIf="response != null">
     <app-visualization [response]="response" [delimiter]="delimiter" [subtractor]="subtractor"></app-visualization>
     <app-table [response]="response"></app-table>
   </div>
