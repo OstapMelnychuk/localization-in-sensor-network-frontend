@@ -88,7 +88,9 @@ export class VisualizationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.p.background(255);
+    if (this.response != null && this.p != null) {
+      this.p.background(255);
+    }
   }
 
 }

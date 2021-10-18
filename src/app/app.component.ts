@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   });
   public delimiter = 1;
   public subtractor = 50;
+  public dataLoaded = false;
 
 
   constructor(public service: NodeLocatorService, private el: ElementRef,
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit {
     this.service.getNodes(3, 1.1, 3).subscribe(res => {
       if (res) {
         this.response = res;
+        this.dataLoaded = true;
         console.log(this.response);
         this.service.toggleNewLocation(true);
       }

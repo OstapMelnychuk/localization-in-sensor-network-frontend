@@ -8,7 +8,7 @@
   </form>
 
 
-  <div *ngIf="response != null">
+  <div *ngIf="dataLoaded">
     <app-visualization [response]="response" [delimiter]="delimiter" [subtractor]="subtractor"></app-visualization>
     <app-table [response]="response"></app-table>
   </div>
@@ -18,7 +18,7 @@
     <button class="button-three"><a routerLink="/comparison" class="link-button" (click)="removeMainPage()">To advanced
       comparison</a></button>
   </div>
-  <div class="graphics">
+  <div *ngIf="dataLoaded" class="graphics">
     <app-graphics [response]="response"></app-graphics>
     <app-graphics-quantity class="second-graphic" [response]="response"></app-graphics-quantity>
   </div>
