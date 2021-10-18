@@ -7,13 +7,16 @@
     <ngx-spinner></ngx-spinner>
   </form>
 
-  <app-visualization [response]="response" [delimiter]="delimiter" [subtractor]="subtractor"></app-visualization>
 
-  <app-table [response]="response"></app-table>
+  <div *ngIf="response">
+    <app-visualization [response]="response" [delimiter]="delimiter" [subtractor]="subtractor"></app-visualization>
+    <app-table [response]="response"></app-table>
+  </div>
 
   <div class="buttons">
     <button (click)="addNode()" class="button-three">Add new node</button>
-    <button class="button-three"> <a routerLink="/comparison" class="link-button" (click)="removeMainPage()">To advanced comparison</a> </button>
+    <button class="button-three"><a routerLink="/comparison" class="link-button" (click)="removeMainPage()">To advanced
+      comparison</a></button>
   </div>
   <div class="graphics">
     <app-graphics [response]="response"></app-graphics>
